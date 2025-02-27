@@ -18,15 +18,20 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
-      - name: prepare the docker-compose run
-        run: |
-          ls -l
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
           context: .
           push: true
           tags: aphichaya8/234-deploylab-frontend:latest
+      - name: Create target directory
+        uses: appleboy/ssh-action@v1.2.1
+        with:
+          host: ${{ secrets.HOST_SERVER }}
+          username: ${{ secrets.HOST_USER_NAME }}
+          key: ${{ secrets.HOST_SSH_PRIVATE_KEY }}
+          port: 22
+          script: mkdir -p /home/ubuntu/frontend
       - name: copy file via ssh password
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -49,4 +54,3 @@ jobs:
             docker compose down
             docker compose pull
             docker compose up -d
-            rm -rf /home/ubuntu/frontend

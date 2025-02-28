@@ -3,7 +3,7 @@ name: Deploy frontend application
 on:
   push:
     branches:
-      - main
+      - update-frontend
 
 jobs:
   docker:

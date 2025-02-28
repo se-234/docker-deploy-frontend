@@ -1,7 +1,8 @@
 version: "3.3"
 services:
   frontend:
-    image: aphichaya8/234-deploylab-frontend-prod:latest
+    image: aphichaya8/234-deploylab-frontend:latest
+    platform: linux/amd64
     pull_policy: always
     ports:
       - "9999:80"

@@ -1,0 +1,7 @@
+version: "3.3"
+services:
+  frontend:
+    image: rinz5/234-deploylab-frontend-prod:latest
+    pull_policy: always
+    ports:
+      - "9999:80"

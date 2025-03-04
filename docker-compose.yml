@@ -1,5 +1,3 @@
-version: '3.3'
-
 services:
   frontend:
     image: aphichaya8/234-deploylab-frontend:latest
